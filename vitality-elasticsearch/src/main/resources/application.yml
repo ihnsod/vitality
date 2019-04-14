@@ -1,0 +1,38 @@
+server:
+  port: 8083
+
+# 连接的eureka server的地址
+eureka:
+  client:
+#    secure-port-enabled: true
+#    ssl:
+#      key-store: client.p12
+#      key-store-password: Wonderful
+    serviceUrl:
+      #当有多个分区时，优先选择与应用实例所在分区一样的其他服务的实例，没有找到则默认使用defaultZone
+      #客户端会使用quarantineSet维护一个不可用的Eureka Server列表 进行请求的时候,优先从可用的列表进行
+      #选择，如果请求失败则切换到下一个Eureka　Server 重试的次数默认为 3
+      defaultZone: http://localhost:8761/eureka/
+#      availability-zones:
+      # 是否过滤出InstanceStatus为UP的实例
+#      filter-only-up-instances:
+#      eureka-service-url-poll-interval-seconds: 10 #默认为300秒，这里为了验证改为10秒
+  # 服务的名字
+  # 指定应用的名字 否则在eureka的页面找不到
+spring:
+  application:
+    name: elasticsearch
+    # 指定config的地址
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 开启断路由功能
+feign:
+  hystrix:
+    enabled: true

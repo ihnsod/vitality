@@ -1,0 +1,44 @@
+server:
+  port: 8761
+  # 开启https ssl 通道
+#  ssl:
+#    enabled: true
+#    key-store: classpath:server.p12
+#    key-store-password: Ihnsod
+#    key-store-type: PKCS12
+#    key-alias: server
+
+eureka:
+  instance:
+    hostname: localhost
+    #    secure-port: ${server.port}
+    #    secure-port-enabled: true
+    #    non-secure-port-enabled: false
+    home-page-url: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false
+  client:
+    # 防止把自己注册为客户端
+    registerWithEureka: false
+    fetchRegistry: false
+    #服务地址
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+# config地址
+#spring:
+#  security:
+#    basic:
+#      enabled:true
+#    user:
+#      name: Ihnsod
+#      password: Wonderful
+#  cloud:
+#    config:
+#      url: http://localhost:8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
