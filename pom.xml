@@ -32,6 +32,8 @@
         <freemarker.version>2.3.28</freemarker.version>
         <ibeetl.version>2.9.9</ibeetl.version>
         <valid.version>2.0.1.Final</valid.version>
+        <cglib.version>3.2.10</cglib.version>
+        <fastjson.version>1.2.57</fastjson.version>
     </properties>
 
     <dependencies>
@@ -63,12 +65,25 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
         <!--valid-->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>${valid.version}</version>
         </dependency>
+        <!-- cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
